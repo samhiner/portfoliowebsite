@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+	<ul class='tabHolder' id='tabs'>
+		<li class='logo'><a href=''><img id='logo' src='images/signature.png' alt='Sam Hiner' height='45px'></a></i>
+		<li><a href='#about' class='tab' id='aboutLink'>ABOUT</a></li>
+		<li><a href='#projects' class='tab' id='projectsLink'>PROJECTS</a></li>
+		<li><a href='#' class='tab' id='homeLink'>HOME</a></li>
+		<!-- Material Design colors: 
+		https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=283593&secondary.color=64DD17-->
+	</ul>
+
+	<div id='pageScreen' style='width: 100%; overflow: hidden;'>
+		<div id='pageHolder' style='width: 100%;'>
+			<div id='homePage' class='cover' style='margin-left: 0%;'>
+				<!--<img src='images/iguana.png' width='500px' style='align: left;'>-->
+				hey
+			</div>
+			<div id='projectsPage' class='cover' style='margin-left: 100%;'>
+				hi
+			</div>
+			<div id='aboutPage' class='cover' style='margin-left: 200%;'>
+				ho
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$(function() {
+			function pageChange(tab) {
+				document.getElementById(tab + 'Link').style.backgroundColor = '#001064';
+				$('#' + tab).animate({marginLeft: '0%'}, 1000);
+				console.log(tab)
+
+				if (tab != 'home') {
+					document.getElementById('homeLink').style.backgroundColor = '';
+				}
+
+				if (tab != 'projects') {
+					document.getElementById('projectsLink').style.backgroundColor = '';
+				}
+
+				if (tab != 'about') {
+					document.getElementById('aboutLink').style.backgroundColor = '';
+				}
+			}
+		
+			function tabChange(nowPage,nextPage) {
+				//if these values were not set in function make it current page
+				//so at start any page will load without animation
+				var newPage = nextPage || window.location.hash;
+				var oldPage = nowPage || window.location.hash;
+
+				//home is '#' or '', which is not in list so is set to -1.
+				//this way projects = home + 1, about = projects + 1, etc
+				var tabs = ['#projects','#about'];
+				var tabDistance = tabs.indexOf(newPage) - tabs.indexOf(oldPage);
+				console.log(tabs.indexOf(oldPage));
+				var tabPercent = '-=' + String(tabDistance * 100) + '%';
+				console.log(tabPercent);
+
+				$('#homePage').animate({marginLeft: tabPercent}, 1000);
+				$('#projectsPage').animate({marginLeft: tabPercent}, 1000);
+				$('#aboutPage').animate({marginLeft: tabPercent}, 1000);
+			}
+
+			tabChange();
+			window.currentPage = window.location.hash;
+
+			$('#tabs a').click(function() {
+				tabChange(window.currentPage,$(this).attr('href'));
+				window.currentPage = $(this).attr('href');
+			});
+		
+		});
+
+	</script>
+</body>
+</html>

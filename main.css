@@ -1,0 +1,38 @@
+body {
+	margin: 0;
+	font-family: 'Lato', sans-serif;
+}
+.tabHolder {
+	list-style-type: none;
+	background-color: #283593;
+	
+	/*getting the taskbar to touch the top + sides*/
+	margin: 0;
+	padding: 0;
+	top: 0;
+	width: 100%;
+	overflow: hidden;
+}
+.tab {
+	display: block;
+	padding: 25px;
+	text-decoration: none;
+	color: #ffffff;
+	font-family: 'Lato', sans-serif;
+	float: right;
+}
+.logo {
+	position: relative;
+	float: left;
+	padding: 10px 10px 10px 15px;
+}
+.cover {
+	background-color: #5f5fc4;
+	color: white;
+	position: relative;
+	width: 100%;
+	float: left;
+}
+.tab:hover {
+	color: #64dd17;
+}
