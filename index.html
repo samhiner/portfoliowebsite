@@ -11,84 +11,77 @@
 
 	<ul class='tabHolder' id='tabs'>
 		<li class='logo'><a href=''><img id='logo' src='images/signature.png' alt='Sam Hiner' height='45px'></a></i>
-		<li><a href='#about' class='tab' id='aboutLink'>ABOUT</a></li>
+		<li><a href='#achievements' class='tab' id='achievementsLink'>ACHIEVEMENTS</a></li>
 		<li><a href='#projects' class='tab' id='projectsLink'>PROJECTS</a></li>
-		<li><a href='#' class='tab' id='homeLink'>HOME</a></li>
+		<li><a href='#' class='tab' id='Link'>HOME</a></li>
 		<!-- Material Design colors: 
 		https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=283593&secondary.color=64DD17-->
 	</ul>
 
-	<div id='pageHolder' style='width: 100%; overflow: hidden;'>
-		<span id='homePage' class='cover' style='margin-left: 0%;'>
+	<div id='pageHolder' style='overflow: hidden; position: fixed; width: 100%;height: 100%;'>
+		<div id='homePage' class='page' style='margin-left: 0%;'>
 			<!--<img src='images/iguana.png' width='500px' style='align: left;'>-->
 			hey
-		</span>
-		<span id='projectsPage' class='cover' style='margin-left: 100%;'>
+		</div>
+		<div id='projectsPage' class='page' style='margin-left: 100%;'>
 			hi
-		</span>
-		<span id='aboutPage' class='cover' style='margin-left: 200%;'>
+		</div>
+		<div id='achievementsPage' class='page' style='margin-left: 200%;'>
 			ho
-		</span>
+		</div>
 	</div>
 
 	<script>
 		$(function() {
-			function pageChange(tab) {
+			function tabChange(tab) {
 				document.getElementById(tab + 'Link').style.backgroundColor = '#001064';
-				$('#' + tab).animate({marginLeft: '0%'}, 1000);
-				console.log(tab)
 
-				if (tab != 'home') {
-					document.getElementById('homeLink').style.backgroundColor = '';
+				if (tab != '') {
+					document.getElementById('Link').style.backgroundColor = '';
 				}
 
 				if (tab != 'projects') {
 					document.getElementById('projectsLink').style.backgroundColor = '';
 				}
 
-				if (tab != 'about') {
-					document.getElementById('aboutLink').style.backgroundColor = '';
+				if (tab != 'achievements') {
+					document.getElementById('achievementsLink').style.backgroundColor = '';
 				}
 			}
 		
 			//find difference between old tab and current tab and move every page a proportional distance
-			function tabChange(nowPage,nextPage) {
+			function pageChange(nowPage,nextPage) {
 				var oldPage = nowPage || 'FIRST';
 				var newPage = nextPage || window.location.hash;
 
 				//home is '#' or '', which is not in list so is set to -1.
-				//this way projects = home + 1, about = projects + 1, etc
-				var tabs = ['#projects','#about'];
+				//this way projects = home + 1, achievements = projects + 1, etc
+				var tabs = ['#projects','#achievements'];
 				var tabDistance = tabs.indexOf(newPage) - tabs.indexOf(oldPage);
 				var tabPercent = '-=' + String(tabDistance * 100) + '%';
-				console.log('oldfunc: ' + oldPage);
-				console.log('newfunc: ' + newPage);
-				console.log(tabPercent);
 
 				//if you directly navigate to url oldPage is first and there is no animation
 				if (oldPage == 'FIRST') {
 					delay = 0;
-					console.log('whooaaaa')
 				} else {
 					delay = 1000;
 				}
 
 				$('#homePage').animate({marginLeft: tabPercent}, delay);
 				$('#projectsPage').animate({marginLeft: tabPercent}, delay);
-				$('#aboutPage').animate({marginLeft: tabPercent}, delay);
+				$('#achievementsPage').animate({marginLeft: tabPercent}, delay);
+				tabChange(newPage.substring(1))
 			}
 
 			//on start change the tab to the one matching your url and set as current url
-			tabChange();
+			pageChange();
 			window.currentPage = window.location.hash;
 
 			function tabSwitch() {
 				//switch string is a placeholder so it isn't seen as empty and doesn't get set to FIRST
 				var pastPage = window.currentPage || 'switch';
-				tabChange(pastPage,window.location.hash);
-				console.log('old: ' + window.currentPage);
+				pageChange(pastPage,window.location.hash);
 				window.currentPage = window.location.hash;
-				console.log('new: ' + window.currentPage);
 			}
 
 			//whenever hash changes (you navigate to new jQuery element) change tab
