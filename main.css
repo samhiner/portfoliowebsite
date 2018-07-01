@@ -29,9 +29,11 @@ body {
 .cover {
 	background-color: #5f5fc4;
 	color: white;
-	position: relative;
+	position: absolute;
 	width: 100%;
 	float: left;
+	display: inline;
+	margin-right: 100px;
 }
 .tab:hover {
 	color: #64dd17;

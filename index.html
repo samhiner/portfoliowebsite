@@ -18,19 +18,17 @@
 		https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=283593&secondary.color=64DD17-->
 	</ul>
 
-	<div id='pageScreen' style='width: 100%; overflow: hidden;'>
-		<div id='pageHolder' style='width: 100%;'>
-			<div id='homePage' class='cover' style='margin-left: 0%;'>
-				<!--<img src='images/iguana.png' width='500px' style='align: left;'>-->
-				hey
-			</div>
-			<div id='projectsPage' class='cover' style='margin-left: 100%;'>
-				hi
-			</div>
-			<div id='aboutPage' class='cover' style='margin-left: 200%;'>
-				ho
-			</div>
-		</div>
+	<div id='pageHolder' style='width: 100%; overflow: hidden;'>
+		<span id='homePage' class='cover' style='margin-left: 0%;'>
+			<!--<img src='images/iguana.png' width='500px' style='align: left;'>-->
+			hey
+		</span>
+		<span id='projectsPage' class='cover' style='margin-left: 100%;'>
+			hi
+		</span>
+		<span id='aboutPage' class='cover' style='margin-left: 200%;'>
+			ho
+		</span>
 	</div>
 
 	<script>
@@ -53,32 +51,48 @@
 				}
 			}
 		
+			//find difference between old tab and current tab and move every page a proportional distance
 			function tabChange(nowPage,nextPage) {
-				//if these values were not set in function make it current page
-				//so at start any page will load without animation
+				var oldPage = nowPage || 'FIRST';
 				var newPage = nextPage || window.location.hash;
-				var oldPage = nowPage || window.location.hash;
 
 				//home is '#' or '', which is not in list so is set to -1.
 				//this way projects = home + 1, about = projects + 1, etc
 				var tabs = ['#projects','#about'];
 				var tabDistance = tabs.indexOf(newPage) - tabs.indexOf(oldPage);
-				console.log(tabs.indexOf(oldPage));
 				var tabPercent = '-=' + String(tabDistance * 100) + '%';
+				console.log('oldfunc: ' + oldPage);
+				console.log('newfunc: ' + newPage);
 				console.log(tabPercent);
 
-				$('#homePage').animate({marginLeft: tabPercent}, 1000);
-				$('#projectsPage').animate({marginLeft: tabPercent}, 1000);
-				$('#aboutPage').animate({marginLeft: tabPercent}, 1000);
+				//if you directly navigate to url oldPage is first and there is no animation
+				if (oldPage == 'FIRST') {
+					delay = 0;
+					console.log('whooaaaa')
+				} else {
+					delay = 1000;
+				}
+
+				$('#homePage').animate({marginLeft: tabPercent}, delay);
+				$('#projectsPage').animate({marginLeft: tabPercent}, delay);
+				$('#aboutPage').animate({marginLeft: tabPercent}, delay);
 			}
 
+			//on start change the tab to the one matching your url and set as current url
 			tabChange();
 			window.currentPage = window.location.hash;
 
-			$('#tabs a').click(function() {
-				tabChange(window.currentPage,$(this).attr('href'));
-				window.currentPage = $(this).attr('href');
-			});
+			function tabSwitch() {
+				//switch string is a placeholder so it isn't seen as empty and doesn't get set to FIRST
+				var pastPage = window.currentPage || 'switch';
+				tabChange(pastPage,window.location.hash);
+				console.log('old: ' + window.currentPage);
+				window.currentPage = window.location.hash;
+				console.log('new: ' + window.currentPage);
+			}
+
+			//whenever hash changes (you navigate to new jQuery element) change tab
+			window.onhashchange = tabSwitch;
 		
 		});
 
