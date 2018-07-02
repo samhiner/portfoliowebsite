@@ -15,25 +15,65 @@
 		<div class='popupHead'>
 			<h2 class='popupTitle'>Stock Research Evaluation</h2>
 			<hr style='width: 70%;'>
-			<span>You are given information on a stock and submit whether you are bearish or bullish on the stock. You are awarded points if this matches analyst's opinions. There are ten stocks per game.</span>
+			<strong>Language:</strong> Python.<br>
+			<strong>Parts of Project:</strong> 
+			<ul style='margin: 0px;'>
+				<li><strong>Quiz (DEMO):</strong> You are given information on a stock and submit whether you are bearish or bullish on the stock. You are awarded points if this matches analyst's opinions.</li>
+				<li><strong>Removal:</strong> If the quiz was not able to find information on a stock, this will remove it from the stock list for the quiz.</li>
+				<li><strong>Cleaner</strong> Jupyter Notebook which turns the raw HTML from which the stock list for the quiz was extracted into a clean list.</li>
+			</ul>
 		</div>
-		<a href='https://github.com/smhnr27/code/tree/master/python/stockresearcheval' class='popupInfo' style='left: 0; border-bottom-left-radius: 15px;'>
-			<img src='images/source.png' width='100px' height='100px' style='margin-top: 20px'>
+		<a href='https://github.com/smhnr27/code/tree/master/python/stockresearcheval' class='popupButtons' style='left: 0; border-bottom-left-radius: 15px;'>
+			<img src='images/source.png' class='popupImage'>
 			<h1>View Source</h1>
 		</a>
-		<a href='projects/stockresearcheval.html' class='popupInfo' style='right: 0; border-bottom-right-radius: 15px;'>
-			<!--ISSUE: make a class for source/demo images with width/height in css. also could make this cursor inside a computer screen-->
-			<img src='images/demo.png' width='100px' height='100px' style='margin-top: 20px'>
+		<a href='projects/stockresearcheval.html' class='popupButtons' style='right: 0; border-bottom-right-radius: 15px;'>
+			<img src='images/demo.png' class='popupImage'>
 			<h1>View Demo</h1>
 		</a>
 	</div>
 	<div id='econSim' class='popup' style='display: none;'>
-		rip
+		<div class='popupHead'>
+			<h2 class='popupTitle'>Economy Simulator</h2>
+			<hr style='width: 70%;'>
+			<strong>Language:</strong> PHP.<br>
+			<strong>Project Details:</strong> This is a multiplayer game where each player owns a company and is attempting to buy out all of the other companies to win. They do this by manufacturing products and trading in commodities and stock markets in order to make the money they need to execute a hostile takeover on another company. Exposes players to basic economic concepts such as how supply and demand affect security pricing. 
+		</div>
+		<a href='https://github.com/smhnr27/economysimulator' class='popupButtons' style='left: 0; border-bottom-left-radius: 15px;'>
+			<img src='images/source.png' class='popupImage'>
+			<h1>View Source</h1>
+		</a>
+		<a class='popupButtons' style='right: 0; border-bottom-right-radius: 15px; cursor: default;'>
+			<!--can replace demo with a notebook if needed, should prob change pics tho-->
+			<img src='images/demo.png' class='popupImage'>
+			<h1>No Demo Yet</h1>
+		</a>
 	</div>
 	<div id='[TEMPLATE]' class='popup' style='display: none;'>
-		
+		<div class='popupHead'>
+			<h2 class='popupTitle'>[NAME]</h2>
+			<hr style='width: 70%;'>
+			<strong>Language:</strong> [LANGUAGE].<br>
+			<strong>Parts of Project:</strong> 
+			<ul style='margin: 0px;'>
+				<li><strong>PART 1 (DEMO):</strong> [MAIN PART DETAILS]</li>
+				<li><strong>PART 2:</strong> [SUPPLEMENTARY PART DETAILS]</li>
+			</ul>
+		</div>
+		<a href='[SOURCE CODE LINK]' class='popupButtons' style='left: 0; border-bottom-left-radius: 15px;'>
+			<img src='images/source.png' class='popupImage'>
+			<h1>View Source</h1>
+		</a>
+		<a href='[DEMO LINK]' class='popupButtons' style='right: 0; border-bottom-right-radius: 15px;'>
+			<!--can replace demo with a notebook if needed, should prob change pics tho-->
+			<img src='images/demo.png' class='popupImage'>
+			<h1>View Demo</h1>
+		</a>
 	</div>
+
 	<div id='darkScreen' class='darkScreen' onclick="popupOff()" style='display: none;'></div>
+
+
 
 	<ul class='tabHolder' id='tabs'>
 		<li class='logo'><a href=''><img id='logo' src='images/signature.png' alt='Sam Hiner' height='45px'></a></i>
@@ -59,23 +99,25 @@
 				<!--remember Jupyter Notebooks are easy to display as html.-->
 				<h1 style='text-align: center; margin-bottom: 10px;'>Featured Projects</h1>
 				<hr style='width: 50%; margin-bottom: 25px;'>
-				<div class='projectIcon' onclick="popupOn('stockEval')">
-					<div id='stockEvalIcon' class="iconBackground"><span class='iconText'>Stock Research Evaluation</span></div>
-				</div>
-				<div class='projectIcon' onclick="popupOn('econSim')">
-					<div id='econSimIcon' class="iconBackground"><span class='iconText'>Economy Simulator</span></div>
-				</div>
-				<div class='projectIcon' onclick="popupOn('stockEval')">
-					<div id='stockEvalIcon' class="iconBackground"><span class='iconText'>Stock Research Evaluation</span></div>
-				</div>
-				<div class='projectIcon' onclick="popupOn('stockEval')">
-					<div id='stockEvalIcon' class="iconBackground"><span class='iconText'>Stock Research Evaluation</span></div>
-				</div>
-				<div class='projectIcon' onclick="popupOn('stockEval')">
-					<div id='stockEvalIcon' class="iconBackground"><span class='iconText'>Stock Research Evaluation</span></div>
-				</div>
-				<div class='projectIcon' onclick="popupOn('stockEval')">
-					<div id='stockEvalIcon' class="iconBackground"><span class='iconText'>Stock Research Evaluation</span></div>
+				<div class='iconHolder'>
+					<div class='projectIcon' onclick="popupOn('stockEval')">
+						<div id='stockEvalIcon' class="iconBackground"><span class='iconText'>Stock Research Evaluation</span></div>
+					</div>
+					<div class='projectIcon' onclick="popupOn('econSim')">
+						<div id='econSimIcon' class="iconBackground"><span class='iconText'>Economy Simulator</span></div>
+					</div>
+					<div class='projectIcon' onclick="popupOn('stockEval')">
+						<div id='stockEvalIcon' class="iconBackground"><span class='iconText'>Stock Research Evaluation</span></div>
+					</div>
+					<div class='projectIcon' onclick="popupOn('stockEval')">
+						<div id='stockEvalIcon' class="iconBackground"><span class='iconText'>Stock Research Evaluation</span></div>
+					</div>
+					<div class='projectIcon' onclick="popupOn('stockEval')">
+						<div id='stockEvalIcon' class="iconBackground"><span class='iconText'>Stock Research Evaluation</span></div>
+					</div>
+					<div class='projectIcon' onclick="popupOn('stockEval')">
+						<div id='stockEvalIcon' class="iconBackground"><span class='iconText'>Stock Research Evaluation</span></div>
+					</div>
 				</div>
 			
 				<span class='credit'>"View Source" Image from <a href='https://logomakr.com'>LogoMakr</a></span>
