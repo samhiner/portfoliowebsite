@@ -1,94 +1,96 @@
 <!DOCTYPE html>
 <html>
 <head>
-	
-	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="main.css">
+	<link href="https://fonts.googleapis.com/css?family=Cabin|Lato|Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href='main.css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+	<!--
+	Material Design Colors: 
+	https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=283593&secondary.color=64DD17
+	-->
 </head>
 <body>
+
+	<div id='stockEval' class='popup' style='display: none;'>
+		<div class='popupHead'>
+			<h2 class='popupTitle'>Stock Research Evaluation</h2>
+			<hr style='width: 70%;'>
+			<span>You are given information on a stock and submit whether you are bearish or bullish on the stock. You are awarded points if this matches analyst's opinions. There are ten stocks per game.</span>
+		</div>
+		<a href='https://github.com/smhnr27/code/tree/master/python/stockresearcheval' class='popupInfo' style='left: 0; border-bottom-left-radius: 15px;'>
+			<img src='images/source.png' width='100px' height='100px' style='margin-top: 20px'>
+			<h1>View Source</h1>
+		</a>
+		<a href='projects/stockresearcheval.html' class='popupInfo' style='right: 0; border-bottom-right-radius: 15px;'>
+			<!--ISSUE: make a class for source/demo images with width/height in css. also could make this cursor inside a computer screen-->
+			<img src='images/demo.png' width='100px' height='100px' style='margin-top: 20px'>
+			<h1>View Demo</h1>
+		</a>
+	</div>
+	<div id='econSim' class='popup' style='display: none;'>
+		rip
+	</div>
+	<div id='[TEMPLATE]' class='popup' style='display: none;'>
+		
+	</div>
+	<div id='darkScreen' class='darkScreen' onclick="popupOff()" style='display: none;'></div>
 
 	<ul class='tabHolder' id='tabs'>
 		<li class='logo'><a href=''><img id='logo' src='images/signature.png' alt='Sam Hiner' height='45px'></a></i>
 		<li><a href='#achievements' class='tab' id='achievementsLink'>ACHIEVEMENTS</a></li>
 		<li><a href='#projects' class='tab' id='projectsLink'>PROJECTS</a></li>
 		<li><a href='#' class='tab' id='Link'>HOME</a></li>
-		<!-- Material Design colors: 
-		https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=283593&secondary.color=64DD17-->
 	</ul>
 
-	<div id='pageHolder' style='overflow: hidden; position: fixed; width: 100%;height: 100%;'>
+	<div class='pageHolder'>
 		<div id='homePage' class='page' style='margin-left: 0%;'>
-			<!--<img src='images/iguana.png' width='500px' style='align: left;'>-->
-			hey
+			<div class='pageTitle'>
+				<span>Hi, I'm Sam Hiner.</span>
+			</div>
+			<div class='pageBody'>
+
+			</div>
 		</div>
 		<div id='projectsPage' class='page' style='margin-left: 100%;'>
-			hi
+			<div class='pageTitle'>
+				<span>My Projects</span>
+			</div>
+			<div class='pageBody'>
+				<!--remember Jupyter Notebooks are easy to display as html.-->
+				<h1 style='text-align: center; margin-bottom: 10px;'>Featured Projects</h1>
+				<hr style='width: 50%; margin-bottom: 25px;'>
+				<div class='projectIcon' onclick="popupOn('stockEval')">
+					<div id='stockEvalIcon' class="iconBackground"><span class='iconText'>Stock Research Evaluation</span></div>
+				</div>
+				<div class='projectIcon' onclick="popupOn('econSim')">
+					<div id='econSimIcon' class="iconBackground"><span class='iconText'>Economy Simulator</span></div>
+				</div>
+				<div class='projectIcon' onclick="popupOn('stockEval')">
+					<div id='stockEvalIcon' class="iconBackground"><span class='iconText'>Stock Research Evaluation</span></div>
+				</div>
+				<div class='projectIcon' onclick="popupOn('stockEval')">
+					<div id='stockEvalIcon' class="iconBackground"><span class='iconText'>Stock Research Evaluation</span></div>
+				</div>
+				<div class='projectIcon' onclick="popupOn('stockEval')">
+					<div id='stockEvalIcon' class="iconBackground"><span class='iconText'>Stock Research Evaluation</span></div>
+				</div>
+				<div class='projectIcon' onclick="popupOn('stockEval')">
+					<div id='stockEvalIcon' class="iconBackground"><span class='iconText'>Stock Research Evaluation</span></div>
+				</div>
+			
+				<span class='credit'>"View Source" Image from <a href='https://logomakr.com'>LogoMakr</a></span>
+			</div>
 		</div>
 		<div id='achievementsPage' class='page' style='margin-left: 200%;'>
-			ho
+			<div class='pageTitle'>
+				<span>My Achievements</span>
+			</div>
+			<div class='pageBody'>
+				
+			</div>
 		</div>
 	</div>
 
-	<script>
-		$(function() {
-			function tabChange(tab) {
-				document.getElementById(tab + 'Link').style.backgroundColor = '#001064';
-
-				if (tab != '') {
-					document.getElementById('Link').style.backgroundColor = '';
-				}
-
-				if (tab != 'projects') {
-					document.getElementById('projectsLink').style.backgroundColor = '';
-				}
-
-				if (tab != 'achievements') {
-					document.getElementById('achievementsLink').style.backgroundColor = '';
-				}
-			}
-		
-			//find difference between old tab and current tab and move every page a proportional distance
-			function pageChange(nowPage,nextPage) {
-				var oldPage = nowPage || 'FIRST';
-				var newPage = nextPage || window.location.hash;
-
-				//home is '#' or '', which is not in list so is set to -1.
-				//this way projects = home + 1, achievements = projects + 1, etc
-				var tabs = ['#projects','#achievements'];
-				var tabDistance = tabs.indexOf(newPage) - tabs.indexOf(oldPage);
-				var tabPercent = '-=' + String(tabDistance * 100) + '%';
-
-				//if you directly navigate to url oldPage is first and there is no animation
-				if (oldPage == 'FIRST') {
-					delay = 0;
-				} else {
-					delay = 1000;
-				}
-
-				$('#homePage').animate({marginLeft: tabPercent}, delay);
-				$('#projectsPage').animate({marginLeft: tabPercent}, delay);
-				$('#achievementsPage').animate({marginLeft: tabPercent}, delay);
-				tabChange(newPage.substring(1))
-			}
-
-			//on start change the tab to the one matching your url and set as current url
-			pageChange();
-			window.currentPage = window.location.hash;
-
-			function tabSwitch() {
-				//switch string is a placeholder so it isn't seen as empty and doesn't get set to FIRST
-				var pastPage = window.currentPage || 'switch';
-				pageChange(pastPage,window.location.hash);
-				window.currentPage = window.location.hash;
-			}
-
-			//whenever hash changes (you navigate to new jQuery element) change tab
-			window.onhashchange = tabSwitch;
-		
-		});
-
-	</script>
+	<script type="text/javascript" src="mainpage.js"></script>
 </body>
 </html>

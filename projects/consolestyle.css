@@ -1,0 +1,33 @@
+.replitHolder {
+	/*all of this makes div occupy full screen*/
+	overflow: hidden;
+	position: absolute; 
+	top: 0%; 
+	left: 0%;
+	height: 100%;
+	width: 100%;
+}
+.replitScreen {
+	overflow: hidden;
+	position: relative; 
+	top: calc(-100% + -51px); 
+	left: -50px;
+	height: calc(200% + 51px);
+	width: calc(100% + 50px);
+
+	/*this is sized to ~200% bc that makes the display the size 
+	of a full screen and the code is then hidden.*/
+
+	/*51px is the size of the header + the bar which is used
+	to resize the code vs display. This plus half of the screen 
+	(the code part) only leaves the display part left. 
+	Also, the 50px is the size of the sidebar*/
+}
+.msg {
+	z-index: 1;
+	position: absolute; 
+	right: calc(4.5em + 5%); 
+	bottom: 2.5em;
+	color: white;
+	font-family: 'Roboto', sans-serif;
+}
