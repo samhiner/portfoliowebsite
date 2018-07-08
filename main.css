@@ -6,12 +6,12 @@ body {
 	list-style-type: none;
 	background-color: #283593;
 	
-	/*getting the taskbar to touch the top + sides*/
 	margin: 0;
 	padding: 0;
 	top: 0;
 	width: 100%;
 	overflow: hidden;
+	position: fixed;
 }
 .logo {
 	position: relative;
@@ -34,12 +34,14 @@ body {
 	position: fixed;
 	width: 100%;
 	height: 100%;
+	top: 69px;
 }
 .page {
 	position: absolute;
 	width: 100%;
 	float: left;
 	height: calc(100% - 69px);
+	overflow: auto;
 }
 .pageTitle {
 	height: 20%;
@@ -53,15 +55,19 @@ body {
 	position: relative;
 	top: calc(50% - 20px)
 }
+.iconHolder {
+	width: 100%;
+	display: inline-flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
 .projectIcon {
 	cursor: pointer;
 	height: 150px;
 	width: 300px;
 	overflow: hidden;
 	border-radius: 20px;
-
-	float: left;
-	margin: 10px;
+	margin-bottom: 25px;
 }
 .iconBackground {
 	height: 100%;
@@ -142,8 +148,8 @@ body {
 	margin-top: 20px
 }
 .credit {
-	position: absolute;
-	right: 0;
+	position: fixed;
+	right: 20px;
 	bottom: 0;
 	margin: 10px;
 	font-size: 14px;
