@@ -12,6 +12,7 @@ body {
 	width: 100%;
 	overflow: hidden;
 	position: fixed;
+	height: 65px;
 }
 .logo {
 	position: relative;
@@ -34,13 +35,13 @@ body {
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	top: 69px;
+	top: 65px;
 }
 .page {
 	position: absolute;
 	width: 100%;
 	float: left;
-	height: calc(100% - 69px);
+	height: calc(100% - 65px);
 	overflow: auto;
 }
 .pageTitle {
@@ -80,13 +81,13 @@ body {
 	background: linear-gradient(
 		rgba(0, 0, 0, 0.7), 
 		rgba(0, 0, 0, 0.7)
-	), url('images/stockresearcheval.png');
+	), url('assets/stockresearcheval.png');
 }
 #econSimIcon {
 	background: linear-gradient(
 		rgba(0, 0, 0, 0.7), 
 		rgba(0, 0, 0, 0.7)
-	), url('images/economysimulator.png');
+	), url('assets/economysimulator.png');
 }
 .iconBackground:hover {
 	transform: scale(1.2);
