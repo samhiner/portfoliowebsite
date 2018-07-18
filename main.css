@@ -77,17 +77,41 @@ body {
 	transition: all 0.5s ease;
 	text-align: center;
 }
+#econSimIcon {
+	background: linear-gradient(
+		rgba(0, 0, 0, 0.7), 
+		rgba(0, 0, 0, 0.7)
+	), url('assets/economysimulator.png');
+}
 #stockEvalIcon {
 	background: linear-gradient(
 		rgba(0, 0, 0, 0.7), 
 		rgba(0, 0, 0, 0.7)
 	), url('assets/stockresearcheval.png');
 }
-#econSimIcon {
+#kinGraphIcon {
 	background: linear-gradient(
 		rgba(0, 0, 0, 0.7), 
 		rgba(0, 0, 0, 0.7)
-	), url('assets/economysimulator.png');
+	), url('assets/placeholder.png');
+}
+#stratGameIcon {
+	background: linear-gradient(
+		rgba(0, 0, 0, 0.7), 
+		rgba(0, 0, 0, 0.7)
+	), url('assets/placeholder.png');
+}
+#starClassIcon {
+	background: linear-gradient(
+		rgba(0, 0, 0, 0.7), 
+		rgba(0, 0, 0, 0.7)
+	), url('assets/placeholder.png');
+}
+#wordDegIcon {
+	background: linear-gradient(
+		rgba(0, 0, 0, 0.7), 
+		rgba(0, 0, 0, 0.7)
+	), url('assets/placeholder.png');
 }
 .iconBackground:hover {
 	transform: scale(1.2);

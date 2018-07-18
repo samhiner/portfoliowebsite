@@ -62,6 +62,9 @@ function popupOn(id) {
 //makes all popups invisible (so you can just click the darkScreen w/o it needing to know what is on)
 function popupOff() {
 	document.getElementById('darkScreen').style.display = 'none';
-	document.getElementById('econSim').style.display = 'none';
-	document.getElementById('stockEval').style.display = 'none';
+	
+	allPopups = document.getElementsByClassName('popup');
+	for (var x = 0; x < allPopups.length; x++) {
+		allPopups[x].style.display = 'none';
+	}
 }
