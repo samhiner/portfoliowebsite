@@ -12,7 +12,7 @@
 	position: relative; 
 	top: calc(-100% + -51px); 
 	left: -50px;
-	height: calc(200% + 51px);
+	height: calc(200% + 52px);
 	width: calc(100% + 50px);
 
 	/*this is sized to ~200% bc that makes the display the size 
@@ -30,4 +30,11 @@
 	bottom: 2.5em;
 	color: white;
 	font-family: 'Roboto', sans-serif;
+}
+.logo {
+	z-index: 1;
+	position: absolute;
+	height: 3.5em;
+	top: 3em;
+	right: 1.25em;
 }

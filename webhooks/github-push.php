@@ -1,3 +1,22 @@
+<html>
+<body>
+	<pre>
+	                      .--.
+	                    .'    ',
+	                  .'        ',
+	                 /\/\/\/\/\/\/\
+	                /\/\/\/\/\/\/\/\
+	               |                |
+	               |/\/\/\/\/\/\/\/\|
+	               |\/\/\/\/\/\/\/\/|
+	               |                |
+	                \/\/\/\/\/\/\/\/
+	                 \/\/\/\/\/\/\/
+	                  `.        .'
+	                    `..__..'
+	</pre>
+</body>
+</html>
 <?php
 //ik your not supposed to hardcode your github secret, much less put it online
 //but it just updates the server, so go ahead and update it hackerman.
@@ -18,7 +37,7 @@ set_exception_handler(function($e) {
 $rawPost = NULL;
 
 if (!isset($_SERVER['HTTP_X_HUB_SIGNATURE'])) {
-	throw new \Exception("HTTP header 'X-Hub-Signature' is missing.");
+	throw new \Exception("You are not a webhook.");
 } elseif (!extension_loaded('hash')) {
 	throw new \Exception("Missing 'hash' extension to check the secret code validity.");
 }
@@ -35,22 +54,3 @@ if ($hash !== hash_hmac($algo, $rawPost, $hookSecret)) {
 }
 
 ?>
-<html>
-<body>
-	<pre>
-	                      .--.
-	                    .'    ',
-	                  .'        ',
-	                 /\/\/\/\/\/\/\
-	                /\/\/\/\/\/\/\/\
-	               |                |
-	               |/\/\/\/\/\/\/\/\|
-	               |\/\/\/\/\/\/\/\/|
-	               |                |
-	                \/\/\/\/\/\/\/\/
-	                 \/\/\/\/\/\/\/
-	                  `.        .'
-	                    `..__..'
-	</pre>
-</body>
-</html>

@@ -2,6 +2,9 @@ body {
 	margin: 0;
 	font-family: 'Open Sans', sans-serif;
 }
+
+/* TABS */
+
 .tabHolder {
 	list-style-type: none;
 	background-color: #283593;
@@ -30,6 +33,9 @@ body {
 .tab:hover {
 	color: #64dd17;
 }
+
+/* PAGES */
+
 .pageHolder {
 	overflow: hidden;
 	position: fixed;
@@ -56,6 +62,9 @@ body {
 	position: relative;
 	top: calc(50% - 20px)
 }
+
+/* ICONS */
+
 .iconHolder {
 	width: 100%;
 	display: inline-flex;
@@ -122,6 +131,9 @@ body {
 	font-size: 22px;
 	top: calc(50% - 12px);
 }
+
+/* POPUPS */
+
 .darkScreen {
 	position: fixed;
 	background-color: black;
@@ -171,6 +183,12 @@ body {
 	width: 100px;
 	height: 100px;
 	margin-top: 20px
+}
+
+/* MISCELLANEOUS */
+
+.link {
+	text-align: center;
 }
 .credit {
 	position: fixed;
