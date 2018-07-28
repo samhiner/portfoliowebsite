@@ -1,4 +1,14 @@
 <html>
+<head>
+	<style>
+		body {
+			color: white;
+		}
+		body pre {
+			color: black;
+		}
+	</style>
+</head>
 <body>
 	<pre>
 	                      .--.
