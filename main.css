@@ -3,37 +3,6 @@ body {
 	font-family: 'Open Sans', sans-serif;
 }
 
-/* TABS */
-
-.tabHolder {
-	list-style-type: none;
-	background-color: #283593;
-	
-	margin: 0;
-	padding: 0;
-	top: 0;
-	width: 100%;
-	overflow: hidden;
-	position: fixed;
-	height: 65px;
-}
-.logo {
-	position: relative;
-	float: left;
-	padding: 10px 10px 10px 15px;
-}
-.tab {
-	display: block;
-	padding: 25px;
-	text-decoration: none;
-	color: #ffffff;
-	font-family: 'Lato', sans-serif;
-	float: right;
-}
-.tab:hover {
-	color: #64dd17;
-}
-
 /* PAGES */
 
 .pageHolder {
@@ -139,10 +108,12 @@ body {
 
 .darkScreen {
 	position: fixed;
+	top: 0;
+	left: 0;
 	background-color: black;
 	width: 100%;
 	height: 100%;
-	opacity: 0.5;
+	opacity: 0.75;
 	z-index: 1;
 }
 .popup {

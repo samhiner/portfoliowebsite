@@ -2,9 +2,9 @@
 	/*all of this makes div occupy full screen*/
 	overflow: hidden;
 	position: absolute; 
-	top: 0%; 
+	top: 65px; 
 	left: 0%;
-	height: 100%;
+	height: calc(100% - 65px);
 	width: 100%;
 }
 .replitScreen {
@@ -31,7 +31,7 @@
 	color: white;
 	font-family: 'Roboto', sans-serif;
 }
-.logo {
+.replItLogo {
 	z-index: 1;
 	position: absolute;
 	height: 3.5em;
