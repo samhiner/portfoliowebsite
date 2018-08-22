@@ -10,9 +10,9 @@
 .replitScreen {
 	overflow: hidden;
 	position: relative; 
-	top: calc(-100% + -51px); 
+	top: 0px; 
 	left: -50px;
-	height: calc(200% + 52px);
+	height: 100%;
 	width: calc(100% + 50px);
 
 	/*this is sized to ~200% bc that makes the display the size 
@@ -22,19 +22,4 @@
 	to resize the code vs display. This plus half of the screen 
 	(the code part) only leaves the display part left. 
 	Also, the 50px is the size of the sidebar*/
-}
-.msg {
-	z-index: 1;
-	position: absolute; 
-	right: calc(4.5em + 5%); 
-	bottom: 2.5em;
-	color: white;
-	font-family: 'Roboto', sans-serif;
-}
-.replItLogo {
-	z-index: 1;
-	position: absolute;
-	height: 3.5em;
-	top: 3em;
-	right: 1.25em;
 }

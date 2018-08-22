@@ -1,6 +1,6 @@
 body {
 	margin: 0;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 /* PAGES */
@@ -25,7 +25,7 @@ body {
 	color: white;
 	text-align: center;
 	font-size: 40px;
-	font-family: 'Cabin', sans-serif;
+	font-family: 'Overpass', sans-serif;
 }
 .pageTitle > span {
 	position: relative;
@@ -135,7 +135,7 @@ body {
 	text-align: center;
 	margin-top: 10px;
 	margin-bottom: 5px;
-	font-family: 'Cabin', sans-serif;
+	font-family: 'Overpass', sans-serif;
 }
 .popupButtons {
 	position: absolute;
@@ -148,7 +148,7 @@ body {
 	border-width: 8px;
 	background-color: #5f5fc4;
 
-	font-family: 'Cabin', sans-serif;
+	font-family: 'Overpass', sans-serif;
 	text-align: center;
 	color: white;
 	text-decoration: none;
