@@ -76,7 +76,10 @@ foreach (file('../../shellscripts/webhooklist.txt') as $line) {
 	}
 }
 
-//TEST making new file by pushing normal code
+if isHash('portfoliowebsite') {
+	var_dump(shell_exec('sudo ../../shellscripts/serverupdate.sh portfoliowebsite 2>&1'));
+	$done = true;
+}
 
 if (!$done) {
 	throw new \Exception('Hook secret does not match.');	
