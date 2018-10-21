@@ -76,7 +76,7 @@ foreach (file('../../shellscripts/webhooklist.txt') as $line) {
 	}
 }
 
-if isHash('portfoliowebsite') {
+if (isHash('portfoliowebsite')) {
 	var_dump(shell_exec('sudo ../../shellscripts/serverupdate.sh portfoliowebsite 2>&1'));
 	$done = true;
 }
