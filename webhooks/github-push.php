@@ -67,10 +67,9 @@ if (!in_array($algo, hash_algos(), TRUE)) {
 
 $rawPost = file_get_contents('php://input');
 
-//TODO turn and thing into a loop through an array
 $done = false;
 foreach (file('../../shellscripts/webhooklist.txt') as $line) {
-	if isHash($line) {
+	if (isHash($line)) {
 		var_dump(shell_exec('sudo ../../shellscripts/serverupdate.sh ' . $line . ' 2>&1'));
 		$done = true;
 	}
