@@ -11,27 +11,23 @@
 </head>
 <body>
 	<pre>
-						  .--.
-						.'	',
-					  .'		',
-					 /\/\/\/\/\/\/\
-					/\/\/\/\/\/\/\/\
-				   |				|
+				          .--.
+				        .'    ',
+				      .'        ',
+				     /\/\/\/\/\/\/\
+				    /\/\/\/\/\/\/\/\
+				   |                |
 				   |/\/\/\/\/\/\/\/\|
 				   |\/\/\/\/\/\/\/\/|
-				   |				|
-					\/\/\/\/\/\/\/\/
-					 \/\/\/\/\/\/\/
-					  `.		.'
-						`..__..'
+				   |                |
+				    \/\/\/\/\/\/\/\/
+				     \/\/\/\/\/\/\/
+				      `.        .'
+				        `..__..'
 	</pre>
 </body>
 </html>
 <?php
-//ik your not supposed to hardcode your github secret, much less put it online
-//but it just updates the server, so go ahead and update it hackerman.
-$mainSecret = 'pepperoni pepperoni give me the pizzaroni';
-
 function isHash($secret) {
 	global $algo;
 	global $rawPost;
@@ -39,6 +35,9 @@ function isHash($secret) {
 	return $hash === hash_hmac($algo, $rawPost, $secret);
 }
 
+/*one of my secrets are hard-coded. if anyone ever reads this, 
+try to imitate a webhook and update my site that'd be pretty cool
+just don't go too crazy*/
 //following script modified from https://gist.github.com/milo/daed6e958ea534e4eba3.
 
 set_error_handler(function($severity, $message, $file, $line) {
@@ -69,6 +68,7 @@ $rawPost = file_get_contents('php://input');
 
 $done = false;
 foreach (file('../../shellscripts/webhooklist.txt') as $line) {
+	$line = trim(preg_replace('/\s\s+/', '', $line));
 	if (isHash($line)) {
 		var_dump(shell_exec('sudo ../../shellscripts/serverupdate.sh ' . $line . ' 2>&1'));
 		$done = true;
