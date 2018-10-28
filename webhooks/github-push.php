@@ -1,3 +1,19 @@
+<!--
+This file updates this repos and other subrepos when they are pushed to on GitHub.
+
+Also, if there is a .unpack config (I made it up), it will replace content according
+to the config. For example, it will change login data for the SQL server as the dev
+server has no password.
+
+To make this work, this should be in a "html" directory where the site is served from.
+Then, any subrepos go into a "projects" directly that is directly under "html".
+Then, make a "shellscripts" folder outside of the html directory where you put two
+scripts from my code/shell repo.
+In the "shellscripts" repo, write "webhooklist.txt" which lists all of your subprojects,
+delimited by \n
+Finally, put any .unpack configs in the "shellscripts" folder and you are good to go.
+-->
+<!DOCTYPE html>
 <html>
 <head>
 	<style>
@@ -35,7 +51,16 @@ function isHash($secret) {
 	return $hash === hash_hmac($algo, $rawPost, $secret);
 }
 
-/*one of my secrets are hard-coded. if anyone ever reads this, 
+function configSetup($repo) {
+	if (file_exists('../../shellscripts/$repo.unpack')) {
+		$line = trim(preg_replace('/\s\s+/', '', $line));
+		if ($line == $repo) {
+			var_dump(shell_exec('sudo ../../shellscripts/dotunpack-exec.sh /var/www/shellscripts/$repo.unpack'));
+		}
+	}
+}
+
+/*one of my secrets is hard-coded. if anyone ever reads this, 
 try to imitate a webhook and update my site that'd be pretty cool
 just don't go too crazy*/
 //following script modified from https://gist.github.com/milo/daed6e958ea534e4eba3.
@@ -72,6 +97,8 @@ foreach (file('../../shellscripts/webhooklist.txt') as $line) {
 	if (isHash($line)) {
 		var_dump(shell_exec('sudo ../../shellscripts/serverupdate.sh ' . $line . ' 2>&1'));
 		$done = true;
+
+		configSetup($line);
 	}
 }
 
