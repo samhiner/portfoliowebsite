@@ -53,10 +53,7 @@ function isHash($secret) {
 
 function configSetup($repo) {
 	if (file_exists('../../shellscripts/' . $repo . '.unpack')) {
-		$line = trim(preg_replace('/\s\s+/', '', $line));
-		if ($line == $repo) {
-			var_dump(shell_exec('sudo ../../shellscripts/dotunpack-exec.sh /var/www/shellscripts/' . $repo . '.unpack'));
-		}
+		var_dump(shell_exec('sudo ../../shellscripts/dotunpack-exec.sh /var/www/shellscripts/' . $repo . '.unpack'));
 	}
 }
 
