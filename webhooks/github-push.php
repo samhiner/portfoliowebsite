@@ -7,11 +7,11 @@ server has no password.
 
 To make this work, this should be in a "html" directory where the site is served from.
 Then, any subrepos go into a "projects" directly that is directly under "html".
-Then, make a "shellscripts" folder outside of the html directory where you put two
+Then, make a "other" folder outside of the html directory where you put two
 scripts from my code/shell repo.
-In the "shellscripts" repo, write "webhooklist.txt" which lists all of your subprojects,
+In the "other" folder, write "webhooklist.txt" which lists all of your subprojects,
 delimited by \n
-Finally, put any .unpack configs in the "shellscripts" folder and you are good to go.
+Finally, put any .unpack configs in the "other" folder and you are good to go.
 -->
 <!DOCTYPE html>
 <html>
@@ -52,8 +52,8 @@ function isHash($secret) {
 }
 
 function configSetup($repo) {
-	if (file_exists('../../shellscripts/' . $repo . '.unpack')) {
-		var_dump(shell_exec('sudo ../../shellscripts/dotunpack-exec.sh /var/www/shellscripts/' . $repo . '.unpack'));
+	if (file_exists('../../other/' . $repo . '.unpack')) {
+		var_dump(shell_exec('sudo ../../other/passwordreplace.sh /var/www/other/' . $repo . '.unpack'));
 	}
 }
 
@@ -89,10 +89,10 @@ if (!in_array($algo, hash_algos(), TRUE)) {
 $rawPost = file_get_contents('php://input');
 
 $done = false;
-foreach (file('../../shellscripts/webhooklist.txt') as $line) {
+foreach (file('../../other/webhooklist.txt') as $line) {
 	$line = trim(preg_replace('/\s\s+/', '', $line));
 	if (isHash($line)) {
-		var_dump(shell_exec('sudo ../../shellscripts/serverupdate.sh ' . $line . ' 2>&1'));
+		var_dump(shell_exec('sudo ../../other/serverupdate.sh ' . $line . ' 2>&1'));
 		$done = true;
 
 		configSetup($line);
@@ -100,7 +100,7 @@ foreach (file('../../shellscripts/webhooklist.txt') as $line) {
 }
 
 if (isHash('portfoliowebsite')) {
-	var_dump(shell_exec('sudo ../../shellscripts/serverupdate.sh portfoliowebsite 2>&1'));
+	var_dump(shell_exec('sudo ../../other/serverupdate.sh portfoliowebsite 2>&1'));
 	$done = true;
 }
 
