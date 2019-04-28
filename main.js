@@ -1,28 +1,26 @@
 //everything in this function switches the page on tab click
-$(function() {
-	function tabChange(tab) {
-		document.getElementById(tab + 'Link').style.backgroundColor = '#001064';
 
-		if (tab != '') {
-			document.getElementById('Link').style.backgroundColor = '';
+var tabsList = ['projects', 'achievements'];
+
+$(function() {
+	function tabChange(oldTab, newTab) {
+		if (oldTab != 'FIRST') {
+			document.getElementById(oldTab + 'Link').style.backgroundColor = '';
 		}
-		if (tab != 'projects') {
-			document.getElementById('projectsLink').style.backgroundColor = '';
-		}
-		if (tab != 'achievements') {
-			document.getElementById('achievementsLink').style.backgroundColor = '';
-		}
+
+		document.getElementById(newTab + 'Link').style.backgroundColor = '#001064';
 	}
 
 	//find difference between old tab and current tab and move every page a proportional distance
-	function pageChange(nowPage,nextPage) {
-		var oldPage = nowPage || 'FIRST';
+	function pageChange(nowPage, nextPage) {
+		var oldPage = nowPage !== undefined ? nowPage : 'FIRST';
+		var oldPage = oldPage[0] == '#' ? oldPage.substring(1) : oldPage;
 		var newPage = nextPage || window.location.hash;
 
 		//home is '#' or '', which is not in list so is set to -1.
-		//this way projects = home + 1, achievements = projects + 1, etc
-		var tabs = ['#projects','#achievements'];
-		var tabDistance = tabs.indexOf(newPage) - tabs.indexOf(oldPage);
+			//this way projects = home + 1, achievements = projects + 1, etc
+		//slice(1) takes off the # that is in front of that part of url
+		var tabDistance = tabsList.indexOf(newPage.slice(1)) - tabsList.indexOf(oldPage);
 		var tabPercent = '-=' + String(tabDistance * 100) + '%';
 
 		//if you directly navigate to url oldPage is first and there is no animation
@@ -33,9 +31,10 @@ $(function() {
 		}
 
 		$('#homePage').animate({marginLeft: tabPercent}, delay);
-		$('#projectsPage').animate({marginLeft: tabPercent}, delay);
-		$('#achievementsPage').animate({marginLeft: tabPercent}, delay);
-		tabChange(newPage.substring(1))
+		for (var x = 0; x < tabsList.length; x++) {
+			$('#' + tabsList[x] + 'Page').animate({marginLeft: tabPercent}, delay);
+		}
+		tabChange(oldPage, newPage.substring(1));
 	}
 
 	//on start change the tab to the one matching your url and set as current url
@@ -44,8 +43,7 @@ $(function() {
 
 	function tabSwitch() {
 		//switch string is a placeholder so it isn't seen as empty and doesn't get set to FIRST
-		var pastPage = window.currentPage || 'switch';
-		pageChange(pastPage,window.location.hash);
+		pageChange(window.currentPage, window.location.hash);
 		window.currentPage = window.location.hash;
 	}
 
